@@ -15,6 +15,15 @@
 
 def josephus_task(num_people, kill_num):
     # Здесь нужно написать код
+    people = [i + 1 for i in range(num_people)]
+    kill_num -= 1
+    whom_kill = kill_num
+    while len(people) != 1:
+        if whom_kill >= len(people):
+            whom_kill %= len(people)
+        people.pop(whom_kill)
+        whom_kill += kill_num
+    survivor = people[0]
     return survivor
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
