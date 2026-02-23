@@ -9,6 +9,13 @@
 
 def multiplication_chain(num):
     # Здесь нужно написать код
+    count_multy = 0
+    while len(str(num)) != 1:
+        count_multy += 1
+        prod = 1
+        for sym in str(num):
+            prod *= int(sym)
+        num = prod
     return count_multy
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ

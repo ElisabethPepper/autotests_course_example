@@ -13,6 +13,15 @@
 
 def max_division_by_3(num):
     # Здесь нужно написать код
+    lst_num = [n for n in str(num)]
+    new_num = num
+    for i, nu in enumerate(lst_num):
+        for ch in range(int(nu) + 1, 10):
+            new_n = int(''.join(lst_num[:i]) + str(ch) + ''.join(lst_num[i + 1:]))
+            if new_n % 3 == 0:
+                new_num = new_n
+        if num != new_num:
+            break
     return new_num
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
