@@ -19,7 +19,24 @@
 
 
 def everything_for_your_cat(cats_data):
+    """
+    Информация по владельцам со всеми его питомцами
+    :param cats_data: информация о котах и их владельцах
+    :return: информация о владельцах и их котах
+    """
     # Здесь нужно написать код
+    owner_cats = {}
+    our_str = ''
+    for cat_data in cats_data:
+        owner = " ".join(cat_data[2:])
+        cat_info = cat_data[0] + ', ' + str(cat_data[1])
+        # добавление информации о коте для владельца
+        if owner in owner_cats:
+            owner_cats[owner] = "; ".join([owner_cats[owner], cat_info])
+        else:
+            owner_cats.setdefault(owner, cat_info)
+    for k in owner_cats.keys():
+        our_str += k + ': ' + owner_cats[k] + '\n'
     return our_str
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ

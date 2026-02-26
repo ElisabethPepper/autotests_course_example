@@ -8,6 +8,12 @@
 
 def repeats(our_str):
     # Здесь нужно написать код
+    new_str = ''
+    str_dict = {}
+    for sym in our_str:
+        # количество вхождения буквы на текущую итерацию
+        str_dict[sym] = str_dict[sym] + 1 if sym in str_dict else 1
+        new_str += sym + '_' + str(str_dict[sym])
     return new_str
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ

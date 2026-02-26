@@ -7,7 +7,15 @@
 
 
 def letter_stat(our_str):
+    """
+    Подсчет количества вхождения букв, которые встречаются в слове
+    :param our_str: исходная строка
+    :return: словарь, с парой буква-количество вхождений
+    """
     # Здесь нужно написать код
+    letters_dict = {}
+    for let in our_str:
+        letters_dict[let] = our_str.count(let)
     return letters_dict
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
