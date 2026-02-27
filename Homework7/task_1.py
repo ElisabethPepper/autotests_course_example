@@ -10,6 +10,37 @@
 # Segment((-2, -3), (-4, -5)).y_axis_intersection() --> False
 
 # Здесь пишем код
+class Segment:
+
+    def __init__(self, first_point, second_point):
+        self.first_point = first_point
+        self.second_point = second_point
+
+    def length(self):
+        """
+        Длина отрезка по координатам
+        :return: длина, округленная до 2-х знаков
+        """
+        result = ((self.second_point[0] - self.first_point[0]) ** 2 +
+                  (self.second_point[1] - self.first_point[1]) ** 2)
+        result = round(result ** 0.5, 2)
+        return result
+
+    def x_axis_intersection(self):
+        """
+        Пересечение с осью абцисс
+        :return: пересекается отрезок с осью абцисс
+        """
+        result = self.first_point[1] * self.second_point[1] <= 0
+        return result
+
+    def y_axis_intersection(self):
+        """
+        Пересечение с осью ординат
+        :return: пересекается отрезок с осью ординат
+        """
+        result = self.first_point[0] * self.second_point[0] <= 0
+        return result
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
