@@ -22,6 +22,43 @@
 # 1337*32*9 = 385056
 
 # Здесь пишем код
+class PersonInfo:
+
+    def __init__(self, fi, age, *args):
+        self.fi = fi
+        self.age = age
+        self.full_path_otdel = args
+
+    def short_name(self):
+        """
+        Вывод фамилии и имени в формате Фамилия И.
+        :return: Фамилия И.
+        """
+        name, surname = self.fi.split(' ')
+        return f'{surname} {name[0]}.'
+
+    def path_deps(self):
+        """
+        Путь в формате"Головное подразделение --> ... --> Конечное подразделение"
+        :return: полный путь до подразделения
+        """
+        path_otdel = ' --> '.join(self.full_path_otdel)
+        return path_otdel
+
+    def new_salary(self):
+        """
+        Индексация зарплаты по расчету:
+        1337 * Возраст * суммарное кол-во вхождений трех наиболее часто встречающихся букв из списка подразделений
+        :return: новая зарплата
+        """
+        count_letters = {}
+        for letter in ''.join(self.full_path_otdel):
+            count_letters[letter] = count_letters[letter] + 1 if letter in count_letters.keys() else 1
+
+        # сортировка трех наиболее часто встречающихся букв из списка подразделений с суммой
+        sum_max_count_let = sum(sorted(count_letters.values(), reverse=True)[:3])
+        salary = 1337 * self.age * sum_max_count_let
+        return salary
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
