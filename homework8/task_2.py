@@ -17,7 +17,21 @@ import unittest  # Не удалять
 
 
 # Здесь пишем код
+class Trigon:
 
+    def __init__(self, *args):
+        if len(args) != 3:
+            raise IndexError(f'Передано {len(args)} аргументов, а ожидается 3')
+        if not isinstance(args[0], (int, float)) or not isinstance(args[1], (int, float)) or not isinstance(args[2], (int, float)):
+            raise TypeError('Стороны должны быть числами')
+        a = args[0]
+        b = args[1]
+        c = args[2]
+        if a <= 0 or b <= 0 or c <= 0:
+            raise ValueError('Стороны должны быть положительными')
+
+        if not (a + b > c and a + c > b and b + c > a):
+            raise Exception('Не треугольник')
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
 
