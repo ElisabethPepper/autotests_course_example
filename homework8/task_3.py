@@ -8,6 +8,13 @@
 
 
 # Здесь пишем код
+def segment(first_point, second_point):
+    x1, y1 = first_point
+    x2, y2 = second_point
+    try:
+        return x1 + y1 + x2 + y2
+    except Exception as e:
+        return e.args[0][::-1]
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
