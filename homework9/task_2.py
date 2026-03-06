@@ -32,5 +32,46 @@
 
 
 import datetime
+import time
+
 
 # Здесь пишем код
+def func_log(file_log='log.txt'):
+    """
+    Декоратор
+    :param file_log: файл для записи результата
+    """
+    def timer(func):
+        def wrapper(*args, **kwargs):
+            with open(file_log, 'a', encoding='utf-8') as file:
+                date = datetime.datetime.now().strftime('%d.%m %H:%M:%S')
+                res = f'{func.__name__} вызвана {date}\n'
+                func(*args, **kwargs)
+                file.write(res)
+        # help(func1) должен выводит одинаковый текст, когда есть декоратор на функции func1 и когда его нет
+        wrapper.__doc__ = func.__doc__
+        return wrapper
+    return timer
+
+
+@func_log()
+def func1():
+    """
+    Что-то делается в функции 1
+    """
+    time.sleep(3)
+
+
+@func_log(file_log='func2.txt')
+def func2():
+    """
+    Что-то делается в функции 2
+    """
+    time.sleep(5)
+
+
+func1()
+func2()
+func1()
+help(func1)
+help(func2)
