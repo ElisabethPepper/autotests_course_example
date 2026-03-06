@@ -4,6 +4,12 @@
 
 
 # Здесь пишем код
+with open("test_file/task1_data.txt", 'r', encoding='utf-8') as file:
+    with open("test_file/task1_answer.txt", 'w', encoding='utf-8') as file_ans:
+        for line in file.readlines():
+            for letter in line:
+                if not letter.isdigit():
+                    file_ans.write(letter)
 
 # Ниже НИЧЕГО НЕ НАДО ИЗМЕНЯТЬ
 
